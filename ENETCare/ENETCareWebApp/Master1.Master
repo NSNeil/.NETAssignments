@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master1.master.cs" Inherits="ENETCare.IMS.WebFrontEnd.Master1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="width: 850px";>
+    <form id="form1" runat="server">
+        
+        <table style="width:100%">
+          <tr>
+            <th>
+                <ul id="MainMenu-ul">
+                    <li id="MainMenu-li-p">ENET Care</li>
+                    <li class="MainMenu-li-a"><a href="/Pages/Common/Login.aspx" class="MainMenu-li-aa">Home</a></li>
+                    <li class="MainMenu-li-a"><a href="/Pages/Common/About.aspx" class="MainMenu-li-aa">About</a></li>
+                    <li class="MainMenu-li-a"><a id="SignOut" class="MainMenu-li-aa" runat="server" onServerClick="SignOut_Click">Sign Out</a></li>
+                </ul>
+            </th>
+            <td rowspan="2">
+                <img alt="ENETCareLogo" style="float: right;" src="/Images/Paper-People-Small.jpg" />
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td style="width:5%">&nbsp;</td>
+                <td style="width:90%">
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+                </td>
+                <td style="width:5%">&nbsp;</td>
+            </tr>
+        </table>
+        <p style="font-size:14px;">
+            Copyright 2017 ENETCare.
+        </p>
+    </form>
+</body>
+</html>

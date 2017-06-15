@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6C2118A2-BAE6-4C69-97F7-F8BE6F7CB7E8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ENETCare.IMS.WebFrontEnd</RootNamespace>
+    <AssemblyName>ENETCare.IMS.WebFrontEnd</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ENETCare.mdf" />
+    <Content Include="App_Data\ENETCare_log.ldf">
+      <DependentUpon>ENETCare.mdf</DependentUpon>
+    </Content>
+    <Content Include="default.aspx" />
+    <Content Include="Images\Calendar.png" />
+    <Content Include="Pages\Accountant\AccountantEngineersAndManagers.aspx" />
+    <Content Include="Pages\Accountant\AccountantGetAverageCostNTime.aspx" />
+    <Content Include="Pages\Accountant\AccountantInitialMenu.aspx" />
+    <Content Include="Pages\Accountant\AccountantsAndManagersMenu.aspx" />
+    <Content Include="Pages\Accountant\AccountantViewCostPerMonth.aspx" />
+    <Content Include="Pages\Accountant\ReportsMenuPage.aspx" />
+    <Content Include="Pages\Accountant\ViewCompletedInterventionCostPerDistrict.aspx" />
+    <Content Include="Pages\Accountant\ViewCostByEngineer.aspx" />
+    <Content Include="Pages\Common\About.aspx" />
+    <Content Include="Pages\Common\ChangePassword.aspx" />
+    <Content Include="Pages\Common\Login.aspx" />
+    <Content Include="Pages\Engineer\ClientAssociatedInterventions.aspx" />
+    <Content Include="Pages\Engineer\CreateClient.aspx" />
+    <Content Include="Pages\Engineer\CreateIntervention.aspx" />
+    <Content Include="Pages\Engineer\EnginnerInitialMenu.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="Master1.Master" />
+    <Content Include="App_Themes\SiteTheme\SkinFile.skin" />
+    <Content Include="Pages\Manager\ApproveIntervention.aspx" />
+    <Content Include="Pages\Manager\ManagerInitialMenu.aspx" />
+    <Content Include="Pages\Engineer\ViewAllInterventions.aspx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Images\Paper-People-Small.jpg" />
+    <Content Include="Images\paper-people.jpeg" />
+    <Content Include="BaseForm_TEMP.aspx" />
+    <Content Include="Pages\Engineer\ViewAllClients.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantEngineersAndManagers.aspx.cs">
+      <DependentUpon>AccountantEngineersAndManagers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantEngineersAndManagers.aspx.designer.cs">
+      <DependentUpon>AccountantEngineersAndManagers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantGetAverageCostNTime.aspx.cs">
+      <DependentUpon>AccountantGetAverageCostNTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantGetAverageCostNTime.aspx.designer.cs">
+      <DependentUpon>AccountantGetAverageCostNTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantInitialMenu.aspx.cs">
+      <DependentUpon>AccountantInitialMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantInitialMenu.aspx.designer.cs">
+      <DependentUpon>AccountantInitialMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantsAndManagersMenu.aspx.cs">
+      <DependentUpon>AccountantsAndManagersMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantsAndManagersMenu.aspx.designer.cs">
+      <DependentUpon>AccountantsAndManagersMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantViewCostPerMonth.aspx.cs">
+      <DependentUpon>AccountantViewCostPerMonth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Accountant\AccountantViewCostPerMonth.aspx.designer.cs">
+      <DependentUpon>AccountantViewCostPerMonth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\ReportsMenuPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>ReportsMenuPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\ReportsMenuPage.aspx.designer.cs">
+      <DependentUpon>ReportsMenuPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\ViewCompletedInterventionCostPerDistrict.aspx.cs">
+      <DependentUpon>ViewCompletedInterventionCostPerDistrict.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Accountant\ViewCompletedInterventionCostPerDistrict.aspx.designer.cs">
+      <DependentUpon>ViewCompletedInterventionCostPerDistrict.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\ViewCostByEngineer.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>ViewCostByEngineer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Accountant\ViewCostByEngineer.aspx.designer.cs">
+      <DependentUpon>ViewCostByEngineer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master1.Master.cs">
+      <DependentUpon>Master1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master1.Master.designer.cs">
+      <DependentUpon>Master1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Engineer\ClientAssociatedInterventions.aspx.cs">
+      <DependentUpon>ClientAssociatedInterventions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Engineer\ClientAssociatedInterventions.aspx.designer.cs">
+      <DependentUpon>ClientAssociatedInterventions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Engineer\CreateClient.aspx.cs">
+      <DependentUpon>CreateClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Engineer\CreateClient.aspx.designer.cs">
+      <DependentUpon>CreateClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Engineer\CreateIntervention.aspx.cs">
+      <DependentUpon>CreateIntervention.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Engineer\CreateIntervention.aspx.designer.cs">
+      <DependentUpon>CreateIntervention.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Engineer\EnginnerInitialMenu.aspx.cs">
+      <DependentUpon>EnginnerInitialMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Engineer\EnginnerInitialMenu.aspx.designer.cs">
+      <DependentUpon>EnginnerInitialMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manager\ApproveIntervention.aspx.cs">
+      <DependentUpon>ApproveIntervention.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manager\ApproveIntervention.aspx.designer.cs">
+      <DependentUpon>ApproveIntervention.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BaseForm_TEMP.aspx.cs">
+      <DependentUpon>BaseForm_TEMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseForm_TEMP.aspx.designer.cs">
+      <DependentUpon>BaseForm_TEMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Engineer\ViewAllClients.aspx.cs">
+      <DependentUpon>ViewAllClients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Engineer\ViewAllClients.aspx.designer.cs">
+      <DependentUpon>ViewAllClients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Pages\Manager\ManagerInitialMenu.aspx.cs">
+      <DependentUpon>ManagerInitialMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manager\ManagerInitialMenu.aspx.designer.cs">
+      <DependentUpon>ManagerInitialMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Engineer\ViewAllInterventions.aspx.cs">
+      <DependentUpon>ViewAllInterventions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Engineer\ViewAllInterventions.aspx.designer.cs">
+      <DependentUpon>ViewAllInterventions.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
+      <Project>{bb0854bf-5b6d-4b5f-83d5-21b7b80b70f8}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseAccessLayer\DatabaseAccessLayer.csproj">
+      <Project>{792dcb4a-35a0-4ba8-92f6-2e25bce08cb4}</Project>
+      <Name>DatabaseAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54060</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53941/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:54060/" workingDir="" />
+          </servers>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

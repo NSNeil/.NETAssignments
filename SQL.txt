@@ -1,0 +1,307 @@
+DROP TABLE [dbo].[Intervention]
+
+DROP TABLE [dbo].[SiteEngineer]
+
+DROP TABLE [dbo].[Manager]
+
+DROP TABLE [dbo].[User]
+
+DROP TABLE [dbo].[District]
+
+DROP TABLE [dbo].[InterventionType]
+
+DROP TABLE [dbo].[Client] 
+
+DROP TABLE [dbo].[State]
+
+DROP TABLE [dbo].[District]
+
+CREATE TABLE [dbo].[District] (
+
+    [District] NCHAR (100) NOT NULL,
+
+    CONSTRAINT [PK_District] PRIMARY KEY CLUSTERED ([District] ASC)
+
+);
+
+
+
+CREATE TABLE [dbo].[User] (
+
+    [UserId]    INT            IDENTITY (1, 1) NOT NULL,
+
+    [LoginName] NCHAR (10)     NOT NULL,
+
+    [Name]      NCHAR (50)     NOT NULL,
+
+    CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED ([UserId] ASC),
+
+    UNIQUE NONCLUSTERED ([LoginName] ASC)
+
+);
+
+
+
+CREATE TABLE [dbo].[SiteEngineer] (
+
+    [SiteEngineerId] INT          IDENTITY (1, 1) NOT NULL,
+
+    [UserId]         INT          NOT NULL,
+
+    [District]       NCHAR (100)  NOT NULL,
+
+    [MaxCost]        DECIMAL (18) NOT NULL,
+
+    [MaxHours]       INT          NOT NULL,
+
+    CONSTRAINT [PK_SiteEngineer] PRIMARY KEY CLUSTERED ([SiteEngineerId] ASC),
+
+    CONSTRAINT [IX_SiteEngineer] UNIQUE NONCLUSTERED ([UserId] ASC),
+
+    CONSTRAINT [FK_SiteEngineer_District] FOREIGN KEY ([District]) REFERENCES [dbo].[District] ([District]) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    CONSTRAINT [FK_SiteEngineer_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId]) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+
+
+CREATE TABLE [dbo].[Manager] (
+
+    [ManagerId] INT          IDENTITY (1, 1) NOT NULL,
+
+    [UserId]    INT          NOT NULL,
+
+    [District]  NCHAR (100)  NOT NULL,
+
+    [MaxCost]   DECIMAL (18) NOT NULL,
+
+    [MaxHours]   INT NOT NULL,		
+
+    CONSTRAINT [PK_Manager] PRIMARY KEY CLUSTERED ([ManagerId] ASC),
+
+    CONSTRAINT [IX_Manager] UNIQUE NONCLUSTERED ([UserId] ASC),
+
+    CONSTRAINT [FK_Manager_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId]) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    CONSTRAINT [FK_Manager_District] FOREIGN KEY ([District]) REFERENCES [dbo].[District] ([District])
+
+);
+
+
+
+
+
+CREATE TABLE [dbo].[InterventionType] (
+
+    [Name]               VARCHAR (50) NULL,
+
+    [LabourHours]        INT          NULL,
+
+    [Cost]               DECIMAL (18) NULL,
+
+    [InterventionTypeId] INT          IDENTITY (1, 1) NOT NULL,
+
+    CONSTRAINT [PK_InterventionType] PRIMARY KEY CLUSTERED ([InterventionTypeId] ASC)
+
+);
+
+
+
+
+
+CREATE TABLE [dbo].[Client] (
+
+    [ClientId] INT         IDENTITY (1, 1) NOT NULL,
+
+    [District] NCHAR (100) NULL,
+
+    [Name]     NCHAR (50)  NULL,
+
+    [Address]  NCHAR (100)  NULL,
+
+    CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED ([ClientId] ASC),
+
+    CONSTRAINT [FK_Client_District] FOREIGN KEY ([District]) REFERENCES [dbo].[District] ([District]) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+
+
+CREATE TABLE [dbo].[State]
+
+(
+
+	[State] NCHAR(10) NOT NULL PRIMARY KEY
+
+)
+
+
+
+CREATE TABLE [dbo].[Intervention] (
+
+    [InterventionId]      INT          IDENTITY (1, 1) NOT NULL,
+
+    [InterventionTypeId]  INT          NULL,
+
+    [ProposedBy]          INT          NULL,
+
+    [ClientId]            INT          NULL,
+
+    [LabourHours]         INT          NULL,
+
+    [Cost]                DECIMAL (18) NULL,
+
+    [DateToPerform]       NCHAR (100)  NULL,
+
+    [State]               NCHAR (10)   NULL,
+
+    [ApprovedBy]          INT          NULL,
+
+    [Note]                NCHAR (100)  NULL,
+
+    [Life]                FLOAT (53)   NULL,
+
+    [MostRecentVisitDate] NCHAR (100)  NULL,
+
+    [District]		  NCHAR(100) NULL, 
+
+    CONSTRAINT [PK_Intervention] PRIMARY KEY CLUSTERED ([InterventionId] ASC),
+
+    CONSTRAINT [FK_Intervention_State] FOREIGN KEY ([State]) REFERENCES [dbo].[State] ([State]) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    CONSTRAINT [FK_Intervention_Client] FOREIGN KEY ([ClientId]) REFERENCES [dbo].[Client] ([ClientId]) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    CONSTRAINT [FK_Intervention_InterventionType] FOREIGN KEY ([InterventionTypeId]) REFERENCES [dbo].[InterventionType] ([InterventionTypeId]) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    CONSTRAINT [FK_Intervention_ApprovedBy] FOREIGN KEY ([ApprovedBy]) REFERENCES [dbo].[User] ([UserId]) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    CONSTRAINT [FK_Intervention_ProposedBy] FOREIGN KEY ([ProposedBy]) REFERENCES [dbo].[SiteEngineer] ([SiteEngineerId]),
+
+    CONSTRAINT [FK_Intervention_District] FOREIGN KEY ([District]) REFERENCES [dbo].[District] ([District])
+
+);	
+
+
+
+INSERT INTO [dbo].[State] ([State]) VALUES (N'Approved  ')
+
+INSERT INTO [dbo].[State] ([State]) VALUES (N'Complete  ')
+
+INSERT INTO [dbo].[State] ([State]) VALUES (N'Proposed  ')
+
+INSERT INTO [dbo].[State] ([State]) VALUES (N'Cancelled ')
+
+
+
+INSERT INTO [dbo].[District] ([District]) VALUES (N'Rural Indonesia                                                                                     ')
+
+INSERT INTO [dbo].[District] ([District]) VALUES (N'Rural New South Wales                                                                               ')
+
+INSERT INTO [dbo].[District] ([District]) VALUES (N'Rural Papua New Guinea                                                                              ')
+
+INSERT INTO [dbo].[District] ([District]) VALUES (N'Sydney                                                                                              ')
+
+INSERT INTO [dbo].[District] ([District]) VALUES (N'Urban Indonesia                                                                                     ')
+
+INSERT INTO [dbo].[District] ([District]) VALUES (N'Urban Papua New Guinea                                                                              ')
+
+
+
+SET IDENTITY_INSERT [dbo].[User] ON
+
+INSERT INTO [dbo].[User] ([UserId], [LoginName], [Name]) VALUES (1, N'Dean', N'Dean')
+
+INSERT INTO [dbo].[User] ([UserId], [LoginName], [Name]) VALUES (2, N'Sam', N'Sam')
+
+INSERT INTO [dbo].[User] ([UserId], [LoginName], [Name]) VALUES (3, N'George', N'George')
+
+INSERT INTO [dbo].[User] ([UserId], [LoginName], [Name]) VALUES (4, N'Kim', N'Kim')
+
+SET IDENTITY_INSERT [dbo].[User] OFF
+
+
+
+SET IDENTITY_INSERT [dbo].[SiteEngineer] ON
+
+INSERT INTO [dbo].[SiteEngineer] ([SiteEngineerId], [UserId], [District], [MaxCost], [MaxHours]) VALUES (3, 1, N'Rural Indonesia ', CAST(12000 AS Decimal(18, 0)), 200)
+
+INSERT INTO [dbo].[SiteEngineer] ([SiteEngineerId], [UserId], [District], [MaxCost], [MaxHours]) VALUES (5, 3, N'Urban Papua New Guinea', CAST(1233 AS Decimal(18, 0)), 234)
+
+INSERT INTO [dbo].[SiteEngineer] ([SiteEngineerId], [UserId], [District], [MaxCost], [MaxHours]) VALUES (6, 4, N'Sydney', CAST(20000 AS Decimal(18, 0)), 2000)
+
+SET IDENTITY_INSERT [dbo].[SiteEngineer] OFF
+
+
+
+SET IDENTITY_INSERT [dbo].[Manager] ON
+
+INSERT INTO [dbo].[Manager] ([ManagerId], [UserId], [District], [MaxCost],[MaxHours]) VALUES (1, 2, N'Sydney                                                                                              ', 100000, 1000)
+
+SET IDENTITY_INSERT [dbo].[Manager] OFF
+
+
+
+SET IDENTITY_INSERT [dbo].[InterventionType] ON
+
+INSERT INTO [dbo].[InterventionType] ([Name], [LabourHours], [Cost], [InterventionTypeId]) VALUES (N'Supply and Install Portable Toilet', 100, CAST(10000 AS Decimal(18, 0)), 1)
+
+INSERT INTO [dbo].[InterventionType] ([Name], [LabourHours], [Cost], [InterventionTypeId]) VALUES (N'Hepatitis Avoidance Training', 56, CAST(3445 AS Decimal(18, 0)), 2)
+
+SET IDENTITY_INSERT [dbo].[InterventionType] OFF
+
+
+
+SET IDENTITY_INSERT [dbo].[Client] ON
+
+INSERT INTO [dbo].[Client] ([ClientId], [District], [Name], [Address]) VALUES (1, N'Rural Indonesia                                                                                     ', N'John Lennon                                       ', N'Pitt St   ')
+
+INSERT INTO [dbo].[Client] ([ClientId], [District], [Name], [Address]) VALUES (2, N'Urban Indonesia                                                                                     ', N'KG                                                ', N'Yip St    ')
+
+SET IDENTITY_INSERT [dbo].[Client] OFF
+
+
+
+SET IDENTITY_INSERT [dbo].[Intervention] ON
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District])
+
+VALUES (2, 2, 5, 2, 50, CAST(1500 AS Decimal(18, 0)), N'30/04/2017', N'Proposed', NULL, N'sd ', 0, N'15/09/2017',N'Sydney')
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District])
+
+VALUES (4, 2, 5, 2, 10, CAST(1500 AS Decimal(18, 0)), N'30/07/2017', N'Approved', 1, N'sd ', 1, N'15/09/2017',N'Rural Indonesia ') 
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District])
+
+VALUES (5, 2, 6, 2, 150, CAST(15000 AS Decimal(18, 0)), N'20/07/2017', N'Approved', 3, N'sd ', 0.5, N'15/09/2017',N'Rural Indonesia ')  
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District])
+
+VALUES (6, 2, 3, 2, 150, CAST(15000 AS Decimal(18, 0)), N'20/07/2017', N'Approved', 4, N'sd ', 0, N'15/09/2017',N'Rural Indonesia ')         
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District]) 
+
+VALUES (1, 1, 3, 1, 100, CAST(10000 AS Decimal(18, 0)), N'15/10/2017', N'Proposed  ', NULL, N'Epic intervention', 0, N'15/11/2017',N'Rural Indonesia ')
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District]) 
+
+VALUES (3, 2, 5, 2, 100, CAST(10000 AS Decimal(18, 0)), N'15/09/2017', N'Proposed  ', NULL, N'sd', 0, N'19/09/2017',N'Rural Indonesia ')
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District]) 
+VALUES (7, 2, 5, 2, 100, CAST(10000 AS Decimal(18, 0)), N'13/08/2017', N'Complete  ', NULL, N'sd', 0, N'19/09/2017',N'Rural Indonesia ')
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District])
+
+VALUES (8, 2, 5, 2, 50, CAST(1500 AS Decimal(18, 0)), N'30/04/2017', N'Complete', NULL, N'sd ', 0, N'15/08/2017',N'Sydney')
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District]) 
+
+VALUES (9, 1, 3, 1, 100, CAST(10000 AS Decimal(18, 0)), N'10/10/2017', N'Complete  ', NULL, N'Epic intervention', 0, N'6/11/2017',N'Rural Indonesia ')
+
+INSERT INTO [dbo].[Intervention] ([InterventionId], [InterventionTypeId], [ProposedBy], [ClientId], [LabourHours], [Cost], [DateToPerform], [State], [ApprovedBy], [Note], [Life], [MostRecentVisitDate], [District])
+
+VALUES (10, 2, 5, 2, 50, CAST(1500 AS Decimal(18, 0)), N'02/08/2017', N'Complete', NULL, N'sd ', 0, N'15/08/2017',N'Sydney')
+
+SET IDENTITY_INSERT [dbo].[Intervention] OFF
+
